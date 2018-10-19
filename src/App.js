@@ -34,10 +34,19 @@ class App extends Component {
 
 
     calculate = () => {
+        var checkResult = ''
+        if(this.state.result.includes('--')){
+            checkResult = this.state.result.replace('--','+')
+        }
+
+        else {
+            checkResult = this.state.result
+        }
+
         try {
             this.setState({
                 // eslint-disable-next-line
-                result: (eval(this.state.result) || "" ) + ""
+                result: (eval(checkResult) || "" ) + ""
             })
         } catch (e) {
             this.setState({
