@@ -4,11 +4,15 @@ import './App.css';
 
 import ResultComponent from './components/ResultComponent';
 import KeyPadComponent from "./components/KeyPadComponent";
+import useKeyPressed from './hooks/useKeyPressed';
 
 const App = ()=>  {
     const initialValue = "0"
+    const numberKeys= ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
     const operationKeys = ['(', ')', 'C', '+', '-', '*', '=', '/']
     const [result, setResult] = useState(initialValue)
+    
+    useKeyPressed([...numberKeys,...operationKeys], (key) => onClick(key));  
 
     const onClick = buttonValue => {
         switch(buttonValue) {
