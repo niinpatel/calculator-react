@@ -1,84 +1,68 @@
-import React, { Component } from 'react';
+
+import React, {useState} from 'react'
 import './App.css';
+
 import ResultComponent from './components/ResultComponent';
 import KeyPadComponent from "./components/KeyPadComponent";
+import useKeyPressed from './hooks/useKeyPressed';
 
-class App extends Component {
-    constructor(){
-        super();
+const App = ()=>  {
+    const initialValue = "0"
+    const numberKeys= ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+    const operationKeys = ['(', ')', 'C', '+', '-', '*', '=', '/']
+    const [result, setResult] = useState(initialValue)
+    
+    useKeyPressed([...numberKeys,...operationKeys], (key) => onClick(key));  
 
-        this.state = {
-            result: ""
-        }
+    const onClick = buttonValue => {
+        switch(buttonValue) {
+            case "=":
+                calculate()
+              break;
+            case "C":
+                reset()
+              break;
+            case "CE":
+                result === 'error' ? reset() : backspace()
+                break;
+            default:
+                if((result === initialValue) && !operationKeys.includes(buttonValue)){
+                    setResult(buttonValue);
+                }
+                else {
+                    setResult(result + buttonValue)
+                }
+          }
     }
-
-    onClick = button => {
-
-        if(button === "="){
-            this.calculate()
-        }
-
-        else if(button === "C"){
-            this.reset()
-        }
-        else if(button === "CE"){
-            this.backspace()
-        }
-
-        else {
-            this.setState({
-                result: this.state.result + button
-            })
-        }
-    };
-
-
-    calculate = () => {
-        var checkResult = ''
-        if(this.state.result.includes('--')){
-            checkResult = this.state.result.replace('--','+')
-        }
-
-        else {
-            checkResult = this.state.result
-        }
-
+    const calculate = () => {
+        const checkResult = result.includes('--') ? result.replace('--','+') : result
         try {
-            this.setState({
-                // eslint-disable-next-line
-                result: (eval(checkResult) || "" ) + ""
-            })
+            const evaluatedResult = eval(checkResult);
+            setResult(evaluatedResult);
         } catch (e) {
-            this.setState({
-                result: "error"
-            })
-
+            setResult("error")
         }
     };
 
-    reset = () => {
-        this.setState({
-            result: ""
-        })
+    const reset = () => {
+        setResult(initialValue)
     };
 
-    backspace = () => {
-        this.setState({
-            result: this.state.result.slice(0, -1)
-        })
+    const backspace = () => {
+        setResult(result.slice(0, -1))
     };
-
-    render() {
-        return (
-            <div>
-                <div className="calculator-body">
-                    <h1>Simple Calculator</h1>
-                    <ResultComponent result={this.state.result}/>
-                    <KeyPadComponent onClick={this.onClick}/>
-                </div>
+    
+    return (
+        <div>
+            <div className="calculator-body">
+                <h1>Simple Calculator</h1>
+                <ResultComponent result={result}/>
+                <KeyPadComponent onClick={onClick}/>
             </div>
-        );
-    }
+        </div>
+    )
 }
 
 export default App;
+
+

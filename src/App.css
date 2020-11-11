@@ -7,7 +7,8 @@
 .result p {
   font-size: 40px;
   margin: 5px;
-
+  padding-top: 5px;
+  text-align-last: center;
 }
 
 .calculator-body {
