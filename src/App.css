@@ -39,11 +39,21 @@ button {
   border:1px solid #333;
   color: white;
 }
+button:hover{
+  background-color: #666;
+}
 .actions{
   background-color: #444;
   color: #ef6431;
 }
+.actions:hover{
+  background-color: #333;
+}
 .equal{
   background-color: orangered;
   color: white;
+}
+.equal:hover{
+  background-color: rgb(255, 181, 154);
+  color: orangered;
 }
