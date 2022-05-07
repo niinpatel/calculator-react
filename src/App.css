@@ -1,27 +1,49 @@
-.result {
-  height: 60px;
-  background-color: #bbb;
+.App{
+  height: 100vh;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#444;
 }
+.result {
+  height: 150px;
+  background-color: #111;
+  width: 100%;
+  border-radius: 10px 10px 0 0 ;
+}
+
 
 .result p {
   font-size: 40px;
   margin: 5px;
-
+  color: white;
+  padding: 15px;
 }
 
 .calculator-body {
-  max-width: 400px;
+  width: 400px;
   margin: auto;
 }
 
 .button {
   display: block;
-  background-color: #bbb;
 }
 
 button {
+  background-color: #555;
   width: 25%;
-  height: 60px;
+  height: 80px;
   font-size: 30px;
+  cursor:pointer;
+  border:1px solid #333;
+  color: white;
+}
+.actions{
+  background-color: #444;
+  color: #ef6431;
+}
+.equal{
+  background-color: orangered;
+  color: white;
 }

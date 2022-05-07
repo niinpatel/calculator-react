@@ -39,9 +39,8 @@ const App =()=> {
     }
 
     return (
-        <div>
+        <div className={`App`}>
             <div className="calculator-body">
-                <h1>Simple Calculator</h1>
                 <ResultComponent result={result}/>
                 <KeyPadComponent onClick={onClick}/>
             </div>
