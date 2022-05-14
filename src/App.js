@@ -14,7 +14,8 @@ const App =()=> {
         }
 
         try {
-            let stringRes = (eval(checkResult) || "").toString()
+            // let stringRes = (eval(checkResult) || "").toString()
+            let stringRes = Function('"use strict";return ('+ (checkResult||"") +')')().toString()
             setResult(stringRes)
         } catch (e) {
             setResult("error")
@@ -24,6 +25,7 @@ const App =()=> {
         setResult("")
     }
     const backspace = () => {
+        console.log(result)
         setResult(prevState => prevState.slice(0, -1))
     }
     const onClick = (button) => {
