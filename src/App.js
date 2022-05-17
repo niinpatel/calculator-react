@@ -12,7 +12,6 @@ const App =()=> {
         } else {
             checkResult = result
         }
-
         try {
             // let stringRes = (eval(checkResult) || "").toString()
             let stringRes = Function('"use strict";return ('+ (checkResult||"") +')')().toString()
