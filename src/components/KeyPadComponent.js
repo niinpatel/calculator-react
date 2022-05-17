@@ -24,13 +24,13 @@ const buttons = [
         {value:"7",className:""},
         {value:"8",className:""},
         {value:"9",className:""},
-        {value:"x",className:"actions"},
+        {value:"*",className:"actions"},
     ],
     [
         {value:".",className:""},
         {value:"0",className:""},
         {value:"=",className:"equal"},
-        {value:"+",className:"actions"},
+        {value:"/",className:"actions"},
     ],
 ]
 const KeyPadComponent = ({onClick}) => {
