@@ -24,7 +24,6 @@ const App =()=> {
         setResult("")
     }
     const backspace = () => {
-        console.log(result)
         setResult(prevState => prevState.slice(0, -1))
     }
     const onClick = (button) => {
@@ -34,15 +33,6 @@ const App =()=> {
             case "CE" : return backspace()
             default : setResult(prevState => prevState+button)
         }
-        // if (button === "=") {
-        //     calculate()
-        // } else if (button === "C") {
-        //     reset()
-        // } else if (button === "CE") {
-        //     backspace()
-        // } else {
-        //     setResult(prevState => prevState + button)
-        // }
     }
 
     return (
