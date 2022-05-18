@@ -3,6 +3,7 @@ import './App.css';
 import ResultComponent from './components/ResultComponent';
 import KeyPadComponent from "./components/KeyPadComponent";
 
+
 const App =()=> {
     const [result, setResult] = useState("")
     const calculate = () => {
@@ -26,6 +27,7 @@ const App =()=> {
     const backspace = () => {
         setResult(prevState => prevState.slice(0, -1))
     }
+
     const onClick = (button) => {
         switch (button){
             case "=" : return calculate()
@@ -41,6 +43,10 @@ const App =()=> {
                 <ResultComponent result={result}/>
                 <KeyPadComponent onClick={onClick}/>
             </div>
+
+            <div style={{backgroundColor:"white"}}>
+            </div>
+
         </div>
     )
 }
